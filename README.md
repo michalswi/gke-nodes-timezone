@@ -12,23 +12,23 @@ Default values:
 - `timezone` - Europe/Berlin
 - `gke_timezone_label` - default-init
 
-Keep in mind to set up the same `label` for GKE nodes!
+Keep in mind to set up the same `label` for GKE nodes and have `kubeconfig` available!
 
 ```
 module "gke_nodes_timezone" {
-  source   = "git::git@github.com/michalswi/gke_nodes_timezone?ref=main
+  source   = "git@github.com:michalswi/gke-nodes-timezone.git?ref=main"
 }
 ```
 
 ```
-> ConfigMap
+> check ConfigMap
 $ kubectl get cm
 NAME               DATA   AGE
 entrypoint         1      8s
 kube-root-ca.crt   1      20h
 
 
-> DaemonSet (3 GKE nodes)
+> check DaemonSet (3 GKE nodes)
 $ kubectl get ds
 NAME               DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
 node-initializer   3         3         3       3            3           <none>          58s
